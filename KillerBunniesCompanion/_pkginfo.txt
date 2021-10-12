@@ -1,0 +1,1 @@
+C:\Users\mgran_000\Documents\Visual Studio 2017\Projects\KillerBunniesCompanion\KillerBunniesCompanion\bin\ARM\Release\Upload\KillerBunniesCompanion_1.1.0.0\KillerBunniesCompanion_1.1.0.0_arm.appxbundle

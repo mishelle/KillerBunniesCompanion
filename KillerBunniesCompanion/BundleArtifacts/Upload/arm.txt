@@ -1,0 +1,3 @@
+MainPackage=C:\Users\mgran_000\Documents\Visual Studio 2017\Projects\KillerBunniesCompanion\KillerBunniesCompanion\bin\ARM\Release\Upload\KillerBunniesCompanion_1.1.0.0_ARM.appx
+SymbolPackage=C:\Users\mgran_000\Documents\Visual Studio 2017\Projects\KillerBunniesCompanion\KillerBunniesCompanion\bin\ARM\Release\Upload\KillerBunniesCompanion_1.1.0.0\KillerBunniesCompanion_1.1.0.0_ARM.appxsym
+ResourcePack=C:\Users\mgran_000\Documents\Visual Studio 2017\Projects\KillerBunniesCompanion\KillerBunniesCompanion\bin\ARM\Release\KillerBunniesCompanion_1.1.0.0_scale-100.appx

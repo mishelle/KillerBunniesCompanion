@@ -1,0 +1,35 @@
+﻿<vm:MainViewModel
+    x:Class="KillerBunniesCompanion.Data.SampleData.MainViewModelSampleData"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:KillerBunniesCompanion.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <vm:MainViewModel.Search>
+        <vm:SearchViewModel SearchTerm="asf">
+            <vm:SearchViewModel.Topics>
+                <vm:TopicViewModel  Title="asdf"/>
+                <vm:TopicViewModel  Title="asdsfdf"/>
+            </vm:SearchViewModel.Topics>
+        </vm:SearchViewModel>
+    </vm:MainViewModel.Search>
+    <vm:MainViewModel.CurrentTopic>
+        <vm:TopicViewModel
+            Title="Day of the Dead"
+            Description="When using this card each of the six dice may be rolled up to three times. If three sixes (minimum) are rolled then the player receives three bunnies back from the dead (the discard pile). The bunnies must match the color of the idce with the sixes. For example, if a player rolls ..."
+            Notes="No custom notes"
+    >
+            <vm:TopicViewModel.References>
+                <vm:ReferenceViewModel Text="blah" LinkId="123"></vm:ReferenceViewModel>
+                <vm:ReferenceViewModel Text="this" LinkId="13"></vm:ReferenceViewModel>
+            </vm:TopicViewModel.References>
+
+        </vm:TopicViewModel>
+    
+
+
+    </vm:MainViewModel.CurrentTopic>
+
+</vm:MainViewModel>

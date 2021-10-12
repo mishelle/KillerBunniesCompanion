@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="KillerBunniesCompanion.Views.SearchView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KillerBunniesCompanion.Views"
+    xmlns:helpers="using:KillerBunniesCompanion.Views.Helpers"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    RequestedTheme="Dark"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignData /ViewModels/SampleData/SearchViewModelSampleData.xaml}">
+
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+            
+        <ListBox x:Name="listBox" HorizontalContentAlignment="Stretch" 
+                 Grid.Row="1"
+                 ItemsSource="{Binding Path=Topics}"
+                 VerticalAlignment="Top"
+                 SelectionChanged="listBox_SelectionChanged"
+                 Visibility="{Binding IsListVisible, Converter={StaticResource BoolToVis}}"
+                 >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <RichTextBlock IsTextSelectionEnabled="False" helpers:RtfConverter.Html="{Binding FormattedTitle}" />
+                </DataTemplate>
+                
+            </ListBox.ItemTemplate>
+      
+            </ListBox>
+        <TextBox x:Name="textBox" 
+                 TextWrapping="Wrap" 
+                 IsTextPredictionEnabled="False"  
+                 LostFocus="textBox_LostFocus"
+                 GotFocus="textBox_GotFocus"
+                 KeyDown="textBox_KeyDown"
+                 Text="{Binding Path=SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" />
+    </Grid>
+</Page>

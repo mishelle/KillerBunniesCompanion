@@ -1,0 +1,19 @@
+﻿<vm:SearchViewModel
+    x:Class="KillerBunniesCompanion.Data.SampleData.SearchViewModelSampleData"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:KillerBunniesCompanion.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    SearchTerm="test">
+
+    <vm:SearchViewModel.Topics>
+        <vm:TopicViewModel Title="Test 1"/>
+        <vm:TopicViewModel Title="Test 2"/>
+        <vm:TopicViewModel Title="Test 3"/>
+        <vm:TopicViewModel Title="Test 4"/>
+    </vm:SearchViewModel.Topics>
+       
+</vm:SearchViewModel>

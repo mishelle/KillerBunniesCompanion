@@ -1,0 +1,62 @@
+﻿<Page
+    x:Class="KillerBunniesCompanion.Views.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KillerBunniesCompanion.Views"
+    xmlns:helpers="using:KillerBunniesCompanion.Views.Helpers"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DataContext="{d:DesignData /ViewModels/SampleData/MainViewModelSampleData.xaml}"
+    mc:Ignorable="d">
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="22">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <local:SearchView Margin="33,5,0,0"
+                              DataContext="{Binding Search}"
+                              Grid.Column="0"/>
+            <Button Grid.Column="0" Click="History_Click"
+                    Style="{StaticResource HistoryButtonStyle}"
+                    VerticalAlignment="Top"
+                    KeyDown="Button_KeyDown">history</Button>
+
+            <Popup x:Name="test" Grid.Row="1"
+                   Margin="28,0,0,0" 
+                   IsOpen="{Binding IsHistoryVisible}" 
+                   IsLightDismissEnabled="True"
+                   GotFocus="test_GotFocus"
+                   Opacity="1">
+                <ListBox x:Name="listBox" HorizontalContentAlignment="Stretch" 
+                ItemsSource="{Binding Path=ViewedTopics}"
+                 VerticalAlignment="Top"
+                         Opacity="1"
+                     SelectionMode="Single"
+                         Background="WhiteSmoke"
+                         
+                         Tapped="listBox_Tapped">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Foreground="Black" Opacity="1" IsTextSelectionEnabled="False" Text="{Binding Title}" />
+                        </DataTemplate>
+
+                    </ListBox.ItemTemplate>
+
+                </ListBox>
+            </Popup>
+                
+
+        </Grid>
+        <local:TopicView Margin="0,20,0,0" Grid.Row="1" DataContext="{Binding CurrentTopic}"></local:TopicView>
+    </Grid>
+</Page>
