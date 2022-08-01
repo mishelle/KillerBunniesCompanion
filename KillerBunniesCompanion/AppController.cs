@@ -25,9 +25,11 @@ namespace KillerBunniesCompanion
 
         internal TopicViewModel MakeTopicVM(DataModels.Topic topic)
         {
-            var topicVM = new TopicViewModel();
-            topicVM.Title = topic.Title;
-            topicVM.RichDescription = _repository.MarkupDescription(topic);
+            var topicVM = new TopicViewModel
+            {
+                Title = topic.Title,
+                RichDescription = _repository.MarkupDescription(topic)
+            };
             return topicVM;
         }
         internal TopicViewModel MakeTopicVM(DataModels.Topic topic, string searchTerm)

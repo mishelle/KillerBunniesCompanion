@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KillerBunniesCompanion.ViewModels
 {
@@ -14,35 +10,26 @@ namespace KillerBunniesCompanion.ViewModels
             ViewedTopics = new ObservableCollection<TopicViewModel>();
         }
 
-        public ObservableCollection<TopicViewModel> ViewedTopics { get; private set; }
+        public ObservableCollection<TopicViewModel> ViewedTopics { get; }
         
         private TopicViewModel _currentTopic;
         public TopicViewModel CurrentTopic
         {
-            get { return _currentTopic; }
-            set 
-            { 
-                SetProperty(ref _currentTopic, value);
-            }
+            get => _currentTopic;
+            set => SetProperty(ref _currentTopic, value);
         }
 
         private SearchViewModel _search;
         public SearchViewModel Search
         {
-            get { return _search; }
-            set
-            {
-                SetProperty(ref _search, value);
-            }
+            get => _search;
+            set => SetProperty(ref _search, value);
         }
         private bool _isHistoryVisible;
         public bool IsHistoryVisible
         {
-            get { return _isHistoryVisible; }
-            set
-            {
-                SetProperty(ref _isHistoryVisible, value);
-            }
+            get => _isHistoryVisible;
+            set => SetProperty(ref _isHistoryVisible, value);
         }
 
         internal void AddTopic(TopicViewModel item)

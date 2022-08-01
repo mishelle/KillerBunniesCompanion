@@ -9,6 +9,7 @@ namespace KillerBunniesCompanion.Data
     {
         private readonly IDataReader _reader;
         private readonly List<Topic> _data;
+
         public Repository(IDataReader reader, Deck lastDeck)
         {
             _data = new List<Topic>();
@@ -20,7 +21,7 @@ namespace KillerBunniesCompanion.Data
         {
             var topic = new Topic
             {
-                Title = "Welcome", 
+                Title = "Welcome",
                 Description = "This will contain stuff about how to set up the game",
             };
             return topic;
@@ -28,24 +29,42 @@ namespace KillerBunniesCompanion.Data
 
         public IEnumerable<Topic> GetMatchedTopics(string search, int maxItems)
         {
-            search = Normalize(search);
-            var results =  _data.Where(t => Normalize(t.Title).Contains(search))
-                                .OrderBy(t => Normalize(t.Title).IndexOf(search))
+            search = TrimAndLower(search);
+            var results =  _data.Where(t => TrimAndLower(t.Title).Contains(search))
+                                .OrderBy(t => TrimAndLower(t.Title).IndexOf(search))
                                 .Take(maxItems).ToList();
             var spaceLeft = maxItems - results.Count;
             if (spaceLeft <= 0) return results;
 
-            var moreResults = _data.Where(t => !results.Contains(t) && Normalize(t.Description).Contains(search))
+            var moreResults = _data.Where(t => !results.Contains(t) && TrimAndLower(t.Description).Contains(search))
                                     .Take(spaceLeft);
             return results.Concat(moreResults);
             
         }
+
         internal Topic GetTopicByTitle(string title)
         {
-            var search = Normalize(title);
-            var results = _data.Where(t => Normalize(t.Title).Equals(search));
+            var search = TrimAndLower(title);
+            var results = _data.Where(t => TrimAndLower(t.Title).Equals(search));
             return results.FirstOrDefault();
         }
+
+        internal string MarkupDescription(Topic topic)
+        {
+            //todo this is case sensitive right now
+            var desc = topic.Description;
+            var title = topic.Title;
+            desc = desc.Replace(title, "@SELF@");
+
+            foreach (var item in _data)
+            {
+                desc = desc.Replace(item.Title, string.Format("<ref title2='{0}'>{0}</ref>", item.Title));
+            }
+            desc = desc.Replace("@SELF@", "<self>" + title + "</self>");
+
+            return desc;
+        }
+
         private void LoadData(Deck lastDeck)
         {
             foreach (Deck deck in Enum.GetValues(typeof(Deck)))
@@ -55,6 +74,7 @@ namespace KillerBunniesCompanion.Data
             }
             //todo possibly here add references
         }
+
         private void LoadDataFile(Deck deck)
         {
             var data = _reader.LoadDeck(deck);
@@ -73,29 +93,12 @@ namespace KillerBunniesCompanion.Data
 
         private static bool TitlesMatch(Topic t, Topic item)
         {
-            return Normalize(t.Title).Equals(Normalize(item.Title));
+            return TrimAndLower(t.Title).Equals(TrimAndLower(item.Title));
         }
 
-        private static string Normalize(string p)
+        private static string TrimAndLower(string p)
         {
-            if (p == null) return "";
-            return p.Trim().ToLowerInvariant();
-        }
-
-        internal string MarkupDescription(Topic topic)
-        {
-            //todo this is case sensitive right now
-            var desc = topic.Description;
-            var title = topic.Title;
-            desc = desc.Replace(title, "@SELF@");
-
-            foreach (var item in _data)
-            {
-                desc = desc.Replace(item.Title, string.Format("<ref title2='{0}'>{0}</ref>", item.Title));
-            }
-            desc = desc.Replace("@SELF@", "<self>" + title + "</self>");
-
-            return desc;
+            return p == null ? "" : p.Trim().ToLowerInvariant();
         }
     }
 }
