@@ -100,9 +100,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppController.cs" />
-    <Compile Include="DataModels\Decks.cs" />
+    <Compile Include="DataModels\Deck.cs" />
     <Compile Include="DataModels\Topic.cs" />
-    <Compile Include="DataModels\TopicTypes.cs" />
+    <Compile Include="DataModels\TopicType.cs" />
     <Compile Include="Data\IDataReader.cs" />
     <Compile Include="Data\Repository.cs" />
     <Compile Include="Data\XmlReader.cs" />

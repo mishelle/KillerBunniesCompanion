@@ -1,6 +1,6 @@
 ﻿namespace KillerBunniesCompanion.DataModels
 {
-    public enum TopicTypes
+    public enum TopicType
     {
         Card,
         CardType,

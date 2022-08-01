@@ -9,7 +9,7 @@ namespace KillerBunniesCompanion.Data
     {
         private readonly IDataReader _reader;
         private readonly List<Topic> _data;
-        public Repository(IDataReader reader, Decks lastDeck)
+        public Repository(IDataReader reader, Deck lastDeck)
         {
             _data = new List<Topic>();
             _reader = reader;
@@ -46,16 +46,16 @@ namespace KillerBunniesCompanion.Data
             var results = _data.Where(t => Normalize(t.Title).Equals(search));
             return results.FirstOrDefault();
         }
-        private void LoadData(Decks lastDeck)
+        private void LoadData(Deck lastDeck)
         {
-            foreach (Decks deck in Enum.GetValues(typeof(Decks)))
+            foreach (Deck deck in Enum.GetValues(typeof(Deck)))
             {
                 LoadDataFile(deck);
                 if (deck == lastDeck) break;
             }
             //todo possibly here add references
         }
-        private void LoadDataFile(Decks deck)
+        private void LoadDataFile(Deck deck)
         {
             var data = _reader.LoadDeck(deck);
 

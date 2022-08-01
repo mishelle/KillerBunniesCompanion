@@ -45,8 +45,8 @@ namespace KillerBunniesCompanion.ViewModels
         }
 
 
-        private TopicTypes _type;
-        public TopicTypes Type
+        private TopicType _type;
+        public TopicType Type
         {
             get { return _type; }
             set { SetProperty(ref _type, value); }

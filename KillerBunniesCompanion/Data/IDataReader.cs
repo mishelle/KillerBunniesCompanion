@@ -5,6 +5,6 @@ namespace KillerBunniesCompanion.Data
 {
     public interface IDataReader
     {
-        IEnumerable<Topic> LoadDeck(Decks deck);
+        IEnumerable<Topic> LoadDeck(Deck deck);
     }
 }

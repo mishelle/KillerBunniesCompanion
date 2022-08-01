@@ -1,6 +1,6 @@
 ﻿namespace KillerBunniesCompanion.DataModels
 {
-    public enum Decks
+    public enum Deck
     {
         Blue,
         Yellow,

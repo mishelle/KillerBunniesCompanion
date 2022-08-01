@@ -11,8 +11,8 @@ namespace KillerBunniesCompanion.DataModels
             Notes = "";
         }
         public int Id { get; set; }
-        public Decks Deck { get; set; }
-        public TopicTypes Type { get; set; }
+        public Deck Deck { get; set; }
+        public TopicType Type { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public List<int> RelatedIds { get; set; }

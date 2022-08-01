@@ -12,7 +12,7 @@ namespace KillerBunniesCompanion
         public AppController()
         {
             var reader = new XmlReader();
-            _repository = new Repository(reader, DataModels.Decks.Pumpkin);
+            _repository = new Repository(reader, DataModels.Deck.Pumpkin);
         }
 
         public MainViewModel GetMainViewModel()

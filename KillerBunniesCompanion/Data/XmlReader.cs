@@ -10,7 +10,7 @@ namespace KillerBunniesCompanion.Data
     public class XmlReader : IDataReader
     {
         private readonly string _rootPath = Package.Current.InstalledLocation.Path;
-        public IEnumerable<Topic> LoadDeck(Decks deck)
+        public IEnumerable<Topic> LoadDeck(Deck deck)
         {
             var path = $"Data/Files/{deck}.xml";
             var xmlPath = Path.Combine(_rootPath, path);
@@ -39,16 +39,16 @@ namespace KillerBunniesCompanion.Data
                 return null;
             }
         }
-        private static TopicTypes GetType(string p)
+        private static TopicType GetType(string p)
         {
             switch (p)
             {
                 case "gameplay":
-                    return TopicTypes.GamePlay;
+                    return TopicType.GamePlay;
                 case "cardtype":
-                    return TopicTypes.CardType;
+                    return TopicType.CardType;
                 default:
-                    return TopicTypes.Card;
+                    return TopicType.Card;
             }
         }
     }
